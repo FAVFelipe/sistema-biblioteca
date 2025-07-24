@@ -65,7 +65,7 @@ O projeto consiste em:
 | Data Entrega     | DATE        |
 
 
-## 🚀 Como executar localmente
+## Como executar localmente
 
 1. Clone o repositório ou baixe os arquivos
 2. Execute o servidor Flask:
