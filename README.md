@@ -1,21 +1,108 @@
-Inicializar o projeto passo-a-passo (via web):
-1. Abra o banco de dados SSMS;
-2. Teste a conexão com o banco de dados;
-3. Execute no SSMS: USE BibliotecaDB;
+📚 Sistema de Cadastro de Empréstimos (CRUD)
+
+Este projeto é um sistema de gerenciamento de empréstimos de livros, com cadastro de alunos, livros e controle de empréstimos, utilizando Python + SQL Server. Disponível tanto com interface web (HTML + Flask) quanto desktop (Tkinter).
+
+🚀 Tecnologias Utilizadas
+
+Python 3
+
+Flask
+
+Tkinter (GUI)
+
+HTML/CSS
+
+SQL Server Express
+
+Ngrok (exposição do servidor local)
+
+Netlify (hospedagem front-end)
+
+🔧 Configuração e Execução
+
+📌 Pré-requisitos
+
+Python instalado
+
+SQL Server Express + SSMS
+
+Ngrok
+
+Netlify (opcional para hospedagem do front-end)
+
+🌐 Modo Web (Flask + HTML)
+
+1. Inicializar o banco de dados
+
+Abra o SQL Server Management Studio (SSMS).
+
+Conecte ao servidor local.
+
+Execute:
+USE BibliotecaDB;
 GO
 SELECT name FROM sys.tables;
-4. Crie e insira os dados nas tabelas Alunos e Livros em gui;
-5. No cmd, vá ao dir do projeto -> cd C:\Users\lipef\OneDrive\Área de Trabalho\TEC\crud_sistema-estagio\backend;
-6. Rode "ngrok http 5000" no cmd;
-7. Copie e cole o link gerado no index.html;
-8. Rode o app.py;
-9. Abra o navegador e acesse o link gerado no index.html;
-10. Salve o projeto, crie um novo projeto no netlify e cadastre o emprestimo.
 
-Encerrar projeto CRUD
-1. CTRL + C no cmd e terminal para encerrar o debug;
-2. Salvar o projeto e fechar.
+Certifique-se de que as tabelas Alunos, Livros e Emprestimos existem.
 
-Comando para zerar tabela de empréstimos no SSMS:
+Insira dados de exemplo nas tabelas Alunos e Livros (via GUI ou SSMS).
+
+2. Executar o servidor Flask
+
+No terminal/cmd:
+cd C:\Users\seudiretoriodoprojeto/
+
+3. Expor localmente com Ngrok
+
+Em outro terminal:
+ngrok http 5000
+
+Copie o link HTTPS gerado (ex: https://xxxxx.ngrok-free.app) e cole no fetch() do seu index.html.
+
+4. Executar o front-end
+
+Abra o index.html no navegador (ou hospede no Netlify).
+
+Preencha os campos e envie o formulário para cadastrar um empréstimo.
+
+🖥️ Modo Desktop (Tkinter)
+
+Passos:
+Execute o script Python com GUI (por exemplo: emprestimo_gui.py):
+python emprestimo_gui.py
+
+A interface permite:
+
+Cadastro de empréstimos com campos validados.
+
+Visualização de empréstimos existentes (lista).
+
+Validações: campos obrigatórios, lógica de datas, duplicidade.
+
+🧹 Limpar a Tabela de Empréstimos (para testes)
+
+No SSMS, execute:
 DELETE FROM Emprestimos;
 DBCC CHECKIDENT ('Emprestimos', RESEED, 0);
+
+🛑 Encerrar o Projeto
+
+No terminal: CTRL + C para encerrar app.py e ngrok.
+
+Salve alterações e feche o projeto.
+
+✅ Funcionalidades e Validações
+
+Cadastro, listagem e validação de empréstimos.
+
+Verificação de:
+
+Campos obrigatórios
+
+Formatos de data
+
+Datas inconsistentes (ex: retirada após entrega)
+
+Duplicidade de RA + Código do Livro
+
+Interface Web e Tkinter disponíveis.
