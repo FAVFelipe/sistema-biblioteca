@@ -1,108 +1,76 @@
-📚 Sistema de Cadastro de Empréstimos (CRUD)
+## Sistema de Biblioteca - CRUD com Flask, SQL Server, Tkinter e Web
 
-Este projeto é um sistema de gerenciamento de empréstimos de livros, com cadastro de alunos, livros e controle de empréstimos, utilizando Python + SQL Server. Disponível tanto com interface web (HTML + Flask) quanto desktop (Tkinter).
+Este projeto é um sistema simples de biblioteca que permite cadastrar, listar e gerenciar alunos, livros e empréstimos. Ele foi desenvolvido como parte de um processo seletivo para estágio na área de desenvolvimento de sistemas.  
 
-🚀 Tecnologias Utilizadas
 
-Python 3
 
-Flask
+**Funcionalidades:**
 
-Tkinter (GUI)
+Cadastro de Alunos, Livros e Empréstimos
 
-HTML/CSS
+Interface gráfica (Tkinter)
 
-SQL Server Express
+Interface web (HTML + JavaScript)
 
-Ngrok (exposição do servidor local)
+API em Flask (backend)
 
-Netlify (hospedagem front-end)
+Conexão com banco de dados SQL Server
 
-🔧 Configuração e Execução
+Validações de entrada
 
-📌 Pré-requisitos
+Prevenção de empréstimos duplicados
 
-Python instalado
 
-SQL Server Express + SSMS
+**Tecnologias Utilizadas:**
 
-Ngrok
+Python 3.10+
 
-Netlify (opcional para hospedagem do front-end)
+Flask (API REST)
 
-🌐 Modo Web (Flask + HTML)
+Tkinter (interface local)
 
-1. Inicializar o banco de dados
+HTML + JS (fetch) (interface web)
 
-Abra o SQL Server Management Studio (SSMS).
+SQL Server Express (banco de dados local)
 
-Conecte ao servidor local.
+Ngrok (expor servidor local para a web)
 
-Execute:
-USE BibliotecaDB;
-GO
-SELECT name FROM sys.tables;
+Validações Implementadas
 
-Certifique-se de que as tabelas Alunos, Livros e Emprestimos existem.
 
-Insira dados de exemplo nas tabelas Alunos e Livros (via GUI ou SSMS).
+**Front-end:**
 
-2. Executar o servidor Flask
+Todos os campos obrigatórios
 
-No terminal/cmd:
-cd C:\Users\seudiretoriodoprojeto/
+Tipagem correta dos dados (números, datas)
 
-3. Expor localmente com Ngrok
+Envio via fetch com JSON
 
-Em outro terminal:
-ngrok http 5000
 
-Copie o link HTTPS gerado (ex: https://xxxxx.ngrok-free.app) e cole no fetch() do seu index.html.
+**Back-end:**
 
-4. Executar o front-end
+Conversão segura de datas para o formato dd/mm/yyyy
 
-Abra o index.html no navegador (ou hospede no Netlify).
+Verificação se a data de retirada é anterior à data de entrega
 
-Preencha os campos e envie o formulário para cadastrar um empréstimo.
+Verificação de empréstimo duplicado (mesmo RA e código do livro)
 
-🖥️ Modo Desktop (Tkinter)
+Mensagens de erro claras via try/except
 
-Passos:
-Execute o script Python com GUI (por exemplo: emprestimo_gui.py):
-python emprestimo_gui.py
 
-A interface permite:
+**Estrutura do Projeto**
 
-Cadastro de empréstimos com campos validados.
+crud_sistema-estagio/
+│
 
-Visualização de empréstimos existentes (lista).
+├── backend/
+│   ├── app.py                
+│   └── models/
+│       └── emprestimo.py     
+│
+├── gui.py 
 
-Validações: campos obrigatórios, lógica de datas, duplicidade.
+├── frontend/
+├── index.html   
 
-🧹 Limpar a Tabela de Empréstimos (para testes)
-
-No SSMS, execute:
-DELETE FROM Emprestimos;
-DBCC CHECKIDENT ('Emprestimos', RESEED, 0);
-
-🛑 Encerrar o Projeto
-
-No terminal: CTRL + C para encerrar app.py e ngrok.
-
-Salve alterações e feche o projeto.
-
-✅ Funcionalidades e Validações
-
-Cadastro, listagem e validação de empréstimos.
-
-Verificação de:
-
-Campos obrigatórios
-
-Formatos de data
-
-Datas inconsistentes (ex: retirada após entrega)
-
-Duplicidade de RA + Código do Livro
-
-Interface Web e Tkinter disponíveis.
+└── README.md                 
